@@ -1,0 +1,217 @@
+0.8.0
+
+Added:
+- Sketch effect + sample textures
+- Fog
+	* Light scattering feature
+- Colorize
+	* Blending modes
+- Black Bars
+	* Added "max size" parameter
+
+Fixed:
+- Several shader compilation warnings
+- Single-Pass Stereo Rendering
+	* Double Vision
+	* Ripples
+	* 3D Hue Shift
+
+0.7.2
+Tested for compatibility with 2018.3 and Post Processing Stack v2.1.2 and LW/HD SRP 3.0.0
+
+Added:
+- Tilt Shift
+	* Horizontal and Radial depth of field effect
+
+Changed:
+- Black Bars
+	* Increased maximum range
+- Fog
+	* Skybox color will never be sampled from any hidden camera's
+
+Fixed:
+- Define symbol not being added for all platforms
+- Demo scene profiles
+- Lens Flares, build error on Linux
+
+Fixed:
+- Incorrect settings on demo scene profiles
+
+0.7.1
+*	Demo scenes and samples can now be installed separately.
+*	Shaders no longer need specific configuration for either the GitHub or Package Manager installation of the Post Processing Stack. 
+	-	This change prepares for Unity 2018.3+ compatibility.
+	-	Package folder can now sit anywhere
+
+Added:
+- Color Grading LUT
+	* Use traditional LUT strips for color grading. Includes the option to blend two LUTs over a distance
+	* Utility for extracting a LUT from a scene screenshot
+- Speed Lines
+	* Cartoon/Anime-style speed intensity effect
+
+0.7.0
+- Added tooltips to all effect parameters
+- Installer now allows to install the Post Processing GitHub repository in 2018.1+
+- The Help window now allows you to reconfigure the shaders for either Post Processing installations (GitHub/Package Manager). This doesn't force 2018.1+ users to use the Package Manager installation anymore.
+
+- Colorize
+	* Applies a color gradient to the image (eg. night or thermal vision)
+- Fog
+	* Added skybox color mode
+
+Changed:
+- Light Streaks
+	* Fixed intensity parameter behaviour
+	* Fixed vertical direction being too short
+- Lens Flares
+	* Fixed serialization issue
+- Color Split
+	* Brought offset value into 0-1 range, for consistency
+- Posterize
+	* Brought intensity value into 0-1 range, for consistency
+- Danger
+	* Removed refraction parameter 
+- Kuwahara
+	* Added start/end distance to Depth Fade mode
+- Dithering
+	* Added Small/Big size options, since values other than 0.5 and 1 induce an interference pattern
+	* Effect is now executed before tonemapping for improved luminance threshold response
+- Pixelize
+	* Reconfigured to work with dynamic resolutions
+- Refraction
+	* Added option in the absence of a DUDV map, where a supplied normal map can be converted in the shader
+- Scanlines
+	* Added animation speed parameter
+
+0.6.1
+- Checked compatibility with Post Processing Stack v2.0.12
+- Minor fixes for macOS and Unity 2018.3 Beta
+
+0.6.0
+- Package now features an installer window when importing the package in a new project
+
+Added:
+- Edge Detection, start and end distance mode
+
+Fixed:
+- Profile serialization issues causing effects to be removed when Unity closes
+- Edge Detection: flickering when using a Scriptable Render Pipeline
+
+Changed:
+- Edge Detection, optimized per-pixel shader operations
+- Edge Detection, merged both sobel solvers into one and added a "thin edges" toggle
+
+0.5.2
+- Repacked contents for Unity 2018.1+
+- "PostProcessing" layer is automatically added to the project if not present
+
+Fixed:
+- Build error for Radial Blur effect
+- Build error for Lens Flares effect
+- Fog noise streaking over skybox when distance fog is disabled
+
+0.5.1
+Added:
+- Gradient
+	* Blending modes
+
+Fixed:
+- Errors messages for some effects when using HDRP
+- Threshold behaviour for Light Streaks and Lens Flares
+- Sunshafts
+	* Directional Light position influencing origin of sun rays
+	* High intensity values causing banding artifacts
+
+0.5.0
+Added:
+- New effects
+	* Sunshafts, radiate sun rays from a directional light and skybox
+	* Fog, distance and height-based fog with density noise
+	* Clouds shadows, projects a texture over the world (cloud example texture included)
+- Screen Gradient
+	* Color fields option
+	* Rotation parameter
+- Overlay
+	* Blending modes
+	* Tiling parameter
+
+Fixed:
+- Single-Pass Stereo rendering fixes for:
+	* Light Streaks
+	* Blur (Box method)
+
+Changed:
+- Effects dropdown is now grouped in categories
+- All effects are now in the SCPE namespace to avoid possible conflicts
+- Edge Detection will show a warning for unsupported modes when using LWRP/HDRP
+- Ambient Occlusion 2D and Lightshafts are automatically disabled in VR
+
+Removed:
+- Fisheye effect (replaced by Unity's Lens Distortion effect)
+- Fog Gradient effect (replaced by Fog effect)
+
+0.4.0
+Added:
+- Auto installation of Post Processing Stack package in Unity 2018.1+
+
+- New effects:
+	* Radial Blur
+	* Lens flares
+- Light streaks:
+	* High quality mode
+	* Direction parameter
+- Double Vision:
+	* Edges mode
+- Edge Detection:
+	* Distance fade parameter
+
+Changed:
+- Lensflares was renamed to "Light streaks"
+- Color Washing was renamed to "3D Hue Shift"
+- Improved threshold behaviour for Light Streaks effect
+- Blur, code improvements
+- Certains effect now skip rendering when effect isn't visible
+
+Fixed:
+- "DX11 Assertion failed" error for all shaders
+
+0.3.0
+Added:
+- Volume blending example scene
+- Volume trigger example scene
+
+Changed:
+- Single-Pass Stereo VR fixes for: 
+	*Edge Detection
+	*Blur 
+	*Overlay
+	*Color Split
+	*Double Vision
+	*LightStreaks
+- Color Depth effect was renamed to "Posterize"
+- Clearer instructions window in Unity 2018.1
+
+Removed:
+- Bloom buffer option from Lens Flare effect
+
+0.2.0
+Added:
+- Intensity parameter to Screen Gradient and Overlays effects
+- Demo scene
+
+0.1.0
+Added:
+- Blur effect
+- Ambient Occlusion 2D effect
+- Lens flares effect (expiremental)
+- Mosaic effect
+
+Fixed:
+- Refraction offsetting entire screen in some cases
+
+Changed:
+- Converted sample refraction normal maps to DUDV maps
+
+0.0.1
+Initial release

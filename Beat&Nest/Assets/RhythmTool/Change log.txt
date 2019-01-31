@@ -1,0 +1,9 @@
+-RhythmTool, RhythmEventProvider and the documentation have been rewritten from scratch
+-Removed RhythmTool.IsBeat and RhythmTool.IsChange. ContainsKey or TryGetValue for both the beats and changes collections can be used instead
+-Replaced RhythmTool.NewSong() with RhythmTool.audioClip
+-Renamed RhythmTool.calculateTempo to RhythmTool.trackBeat
+-Renamed RhythmTool.preCalculate to RhythmTool.preAnalyze
+-Renamed RhythmTool.storeAnalyses to RhythmTool.cacheAnalysis
+-Added RhythmTool.Reset and RhythmEventProvider.Reset, an event that occurs when a song has restarted or a new song has been loaded
+-RhythmEventProvider now needs to be given a RhythmTool Component instead of using all RhythmTool components in the scene
+-RhythmEventProvider no longer uses UnityEvents. Instead it uses c# events, for a more consistent api. In the previous verions c# events and UnityEvents were used in different cases. This means the events are no longer available in the editor
