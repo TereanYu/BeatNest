@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Beat&Nest.unity
     guid: 719dc3ad0caf9044ca4f3eee918c6fa3
+  - enabled: 1
+    path: Assets/_Scenes/Beat&Nest 1.unity
+    guid: 5baada19cdcf5ce40b45fba2a960781a
   m_configObjects: {}

@@ -92,6 +92,7 @@ namespace YU.ECS
             Level_HorizontalLaser(198f);
             Level_VerticalLaser(200f);
             Level_HighQiLai(204f);
+
         }
 
         private void InitTeach()

@@ -7,6 +7,7 @@
 #endregion
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace YU.ECS
 {
@@ -17,7 +18,14 @@ namespace YU.ECS
         public bool isMuiscReady = false;
         [HideInInspector]
         public bool isStartGame = false;
+        [HideInInspector]
+        public bool isResetGame = false;
 
+
+        private void Awake()
+        {
+            
+        }
 
         private void Update()
         {
@@ -26,10 +34,15 @@ namespace YU.ECS
             {
                 Application.Quit();
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ResetGame();
+            }
         }
 
         public void StartGame()
         {
+            isStartGame = true;
             MusicController.Instance.m_rhythmTool.Play();
             LevelController.Instance.StartLevelTimer();
             UIManager.Instance.HideStartUI();
@@ -40,7 +53,7 @@ namespace YU.ECS
             isStartGame = false;
             LevelController.Instance.CancelInvoke("MyTimer");
             UIManager.Instance.ShowLoseText();
-            StartCoroutine("WaitAndQuit");
+            StartCoroutine("WaitAndReset");
         }
 
         public void WinGame()
@@ -48,13 +61,20 @@ namespace YU.ECS
             isStartGame = false;
             LevelController.Instance.CancelInvoke("MyTimer");
             UIManager.Instance.ShowSuccessText();
-            StartCoroutine("WaitAndQuit");
+            StartCoroutine("WaitAndReset");
         }
 
-        public IEnumerator WaitAndQuit()
+        public IEnumerator WaitAndReset()
         {
             yield return new WaitForSeconds(3f);
-            Application.Quit();
+            ResetGame();
+        }
+
+        public void ResetGame()
+        {
+            SceneManager.LoadSceneAsync("Beat&Nest");
+            UIManager.Instance.ResetText();
+            isResetGame = true;
         }
     }
 }

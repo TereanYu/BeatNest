@@ -98,7 +98,7 @@ namespace YU.ECS {
         private float m_beatDelta;
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)&&Game.Instance.isStartGame)
             {
                 m_pressBeatTime = Time.time;
                 m_beatDelta = m_pressBeatTime - m_currBeatTime;

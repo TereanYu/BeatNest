@@ -27,7 +27,12 @@ namespace YU.ECS {
 
         public GameObject StartUI;
 
-        private int oldTeachIndex = -1;
+        private int oldTeachIndex;
+
+        private void Awake()
+        {
+            oldTeachIndex = -1;
+        }
 
         private void Update()
         {
@@ -57,6 +62,12 @@ namespace YU.ECS {
         public void ShowLoseText()
         {
             m_loseText.enabled = true;
+        }
+
+        public void ResetText()
+        {
+            m_successText.enabled = false;
+            m_loseText.enabled = false;
         }
 
         public void ShowTeachText(string contentEnglish,string contentChinese)

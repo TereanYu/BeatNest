@@ -103,7 +103,7 @@ namespace YU.ECS
             }
 
             //for test
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 var entityManager = World.Active.GetOrCreateManager<EntityManager>();
                 for (int i = 0; i <10000; i++)

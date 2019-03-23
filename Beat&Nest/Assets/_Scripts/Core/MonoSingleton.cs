@@ -58,7 +58,7 @@ namespace YU.ECS {
 
 		public void OnDestroy()
 		{
-			s_applicationIsQuitting = true;
+			//s_applicationIsQuitting = true;
 		}
 		#endregion
 
