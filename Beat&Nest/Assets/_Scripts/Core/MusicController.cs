@@ -98,7 +98,7 @@ namespace YU.ECS {
         private float m_beatDelta;
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space)&&Game.Instance.isStartGame)
+            if (Game.Instance.isStartGame&&(Input.GetKeyDown(KeyCode.Space)|| (Input.touchCount == 2&&(Input.touches[0].phase== TouchPhase.Began|| Input.touches[1].phase == TouchPhase.Began))))
             {
                 m_pressBeatTime = Time.time;
                 m_beatDelta = m_pressBeatTime - m_currBeatTime;

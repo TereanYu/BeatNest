@@ -85,7 +85,7 @@ namespace YU.ECS
                     float4 v = new float4(-960f, -540f, 960f, 540f);
 
                     //力属性初始化
-                    ForceComponent f = new ForceComponent { Mass = 50f, bound = v, frictionCoe = 0.1f };
+                    ForceComponent f = new ForceComponent { Mass = 70f, bound = v, frictionCoe = 0.1f };
 
                     entityManager.SetComponentData(cube, f);
 
@@ -103,7 +103,7 @@ namespace YU.ECS
             }
 
             //for test
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)||(Input.touchCount>=3&&Input.touches[0].phase== TouchPhase.Ended))
             {
                 var entityManager = World.Active.GetOrCreateManager<EntityManager>();
                 for (int i = 0; i <10000; i++)
@@ -134,7 +134,7 @@ namespace YU.ECS
                     float4 v = new float4(-960f, -540f, 960f, 540f);
 
                     //力属性初始化
-                    ForceComponent f = new ForceComponent { Mass = 50f, bound = v, frictionCoe = 0.1f };
+                    ForceComponent f = new ForceComponent { Mass = 70f, bound = v, frictionCoe = 0.1f };
 
                     entityManager.SetComponentData(cube, f);
 

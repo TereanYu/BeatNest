@@ -36,8 +36,10 @@ namespace YU.ECS
 
                 //速度小于0.1f直接抛弃
                 if (math.length(cube.velocity) >= 0.1f)
+                { 
                     //应用摩擦力
                     ApplyForce(ref cube, CalculateFriction(forcefield.frictionCoe, ref cube));
+                }
                 else
                 {
                     Stop(ref cube);
@@ -125,6 +127,7 @@ namespace YU.ECS
         //系统会每帧调用这个函数
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
+//#if UNITY_STANDALONE
             // ------- input handle ------
             //left - pull
             if (Input.GetMouseButtonDown(0))
@@ -160,8 +163,24 @@ namespace YU.ECS
             }
             mousePos = Camera.main.ScreenToWorldPoint(new float3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
             mousePos.y = 0;
-
             // ------- end input handle ------
+//#endif
+#if UNITY_ANDROID
+            if (Input.touchCount == 1)
+            {
+                if (Input.touches[0].phase == TouchPhase.Moved)
+                {
+                    _isForceOn = true;
+                    mousePos = Camera.main.ScreenToWorldPoint(new float3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y, Camera.main.transform.position.y));
+                    mousePos.y = 0;
+                }
+            }
+            else
+            {
+                //_isForceOn = false;
+            }
+#endif
+
 
             //初始化一个job
             var job = new JobProcess { isForceOn = _isForceOn, forceMode = _forceMode, mousePosition = mousePos };
